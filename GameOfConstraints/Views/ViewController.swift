@@ -39,7 +39,15 @@ class ViewController: UIViewController {
     }
     @IBAction func getListOfConstraints(_ sender: Any) {
         let nextVC = story.instantiateViewController(withIdentifier: "listVC") as! ConstraintsList
-        nextVC.listData = self.view.subviews//.constraints
+        nextVC.listData = self.view.constraints.filter({ (lay) -> Bool in
+            return !(((lay.firstItem as? UIView)?.accessibilityIdentifier == nil) && ((lay.secondItem as? UIView)?.accessibilityIdentifier == nil))
+        }) //subviews//
+        for vw in self.view.subviews {
+            let subViewsConstraints = vw.constraints.filter({ (lay) -> Bool in
+                return !(((lay.firstItem as? UIView)?.accessibilityIdentifier == nil) && ((lay.secondItem as? UIView)?.accessibilityIdentifier == nil))
+            })
+            nextVC.listData.append(contentsOf: subViewsConstraints)
+        }
         self.navigationController?.pushViewController(nextVC, animated: true)
     }
     

@@ -7,9 +7,12 @@
 
 import UIKit
 
+let attributesList : [String] = ["notAnAttribute","left","right","top","bottom","leading","trailing","width","height","centerX","centerY","lastBaseline","firstBaseline","leftMargin","rightMargin","topMargin","bottomMargin","leadingMargin","trailingMargin","centerXWithinMargins","centerYWithinMargins"]
+let story = UIStoryboard(name: "Main", bundle: Bundle.main)
+
 class ConstraintsList: UITableViewController {
     
-    var listData: Array<UIView> = []
+    var listData: Array<NSLayoutConstraint> = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,15 +28,42 @@ class ConstraintsList: UITableViewController {
         cell?.textLabel?.text = ""
         let info = listData[indexPath.row]
         var str = ""
-        for constraint in info.constraints {
-            str = "\(str) \n \(constraint.firstItem?.accessibilityName ?? info.accessibilityIdentifier).\(constraint.firstAttribute.rawValue) = \(constraint.secondItem?.accessibilityName ?? "SuperView").\(constraint.secondAttribute)*\(constraint.multiplier.description) + \(constraint.constant.description)"
-        }
-        cell?.textLabel?.text = "\(info.accessibilityIdentifier ?? "") Constraints \n \(str)"
+        str = "\((info.firstItem as? UIView)?.accessibilityIdentifier ?? "SuperView").\(info.firstAttribute.readableAttr()) \(info.relation.equalityStr()) \((info.secondItem as? UIView)?.accessibilityIdentifier ?? "SuperView").\(info.secondAttribute.readableAttr())*\(info.multiplier.description) + \(info.constant.description)"
+        cell?.textLabel?.text = "\(str)"
         cell?.textLabel?.numberOfLines = 0
         return cell ?? UITableViewCell()
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let nextVC = story.instantiateViewController(withIdentifier: "Details") as! ConstraintsVC
+        nextVC.theConstraint = listData[indexPath.row]
+        self.navigationController?.pushViewController(nextVC, animated: true)
+    }
+}
+
+extension NSLayoutConstraint.Attribute {
+    func readableAttr() -> String {
+        if self.rawValue < attributesList.count {
+            return attributesList[self.rawValue]
+        }else {
+            return ""
+        }
+        
+    }
+}
+
+extension NSLayoutConstraint.Relation {
+    func equalityStr() -> String {
+        switch self {
+        case .equal:
+            return "="
+        case .greaterThanOrEqual:
+            return ">="
+        case.lessThanOrEqual:
+            return "=<"
+        default:
+            return "="
+        }
         
     }
 }
