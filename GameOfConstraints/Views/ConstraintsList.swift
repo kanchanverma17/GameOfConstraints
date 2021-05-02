@@ -13,6 +13,10 @@ let story = UIStoryboard(name: "Main", bundle: Bundle.main)
 class ConstraintsList: UITableViewController {
     
     var listData: Array<NSLayoutConstraint> = []
+    var firstItem: String!
+    var seconditem: String!
+    var multiplier: String!
+    var constant: String!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,8 +31,9 @@ class ConstraintsList: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "brief")
         cell?.textLabel?.text = ""
         let info = listData[indexPath.row]
-        var str = ""
-        str = "\((info.firstItem as? UIView)?.accessibilityIdentifier ?? "SuperView").\(info.firstAttribute.readableAttr()) \(info.relation.equalityStr()) \((info.secondItem as? UIView)?.accessibilityIdentifier ?? "SuperView").\(info.secondAttribute.readableAttr())*\(info.multiplier.description) + \(info.constant.description)"
+        firstItem = "\((info.firstItem as? UIView)?.accessibilityIdentifier ?? "SuperView").\(info.firstAttribute.readableAttr())"
+        seconditem = info.secondAttribute.rawValue == 0 ? "" : "\((info.secondItem as? UIView)?.accessibilityIdentifier ?? "SuperView").\(info.secondAttribute.readableAttr())"
+        let str = seconditem?.isEmpty ?? false ? "\(firstItem ?? "") \(info.relation.equalityStr()) \(info.constant.description)" : "\(firstItem ?? "") \(info.relation.equalityStr()) \(seconditem ?? "") * \(info.multiplier.description) \(info.constant < 0 ? "-" : "+") \(info.constant.description)"
         cell?.textLabel?.text = "\(str)"
         cell?.textLabel?.numberOfLines = 0
         return cell ?? UITableViewCell()
