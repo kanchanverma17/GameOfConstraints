@@ -42,6 +42,7 @@ class ConstraintsList: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let nextVC = story.instantiateViewController(withIdentifier: "Details") as! ConstraintsVC
         nextVC.theConstraint = listData[indexPath.row]
+        nextVC.updateInitialVW = self.navigationController?.viewControllers.first as! updateViews
         self.navigationController?.pushViewController(nextVC, animated: true)
     }
 }

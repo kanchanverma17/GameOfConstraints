@@ -7,7 +7,22 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, updateViews {
+    func constraintChanged(newConstraingt: NSLayoutConstraint) {
+        let changedConst = self.view.constraints.filter { (const) -> Bool in
+            return const.hashValue ==  newConstraingt.hashValue
+        }
+        if let changed = changedConst.first {
+            self.view.removeConstraint(changed)
+        }
+        
+        DispatchQueue.main.async {
+            self.view.addConstraint(newConstraingt)
+            self.view.updateConstraints()
+            self.view.layoutIfNeeded()
+        }
+    }
+    
     let story = UIStoryboard(name: "Main", bundle: Bundle.main)
 
     override func viewDidLoad() {
