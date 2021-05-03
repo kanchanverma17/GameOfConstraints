@@ -51,6 +51,7 @@ class ConstraintsVC: UIViewController , UITextFieldDelegate {
         }
         theConstraint.priority = UILayoutPriority.init((priority.text as NSString?)?.floatValue ?? 0.0)
         theConstraint.constant = CGFloat((offSet.text as NSString?)?.floatValue ?? 0.0)
+        theConstraint.isActive = toggleIsActive.isOn
         updateInitialVW?.constraintChanged(newConstraingt: theConstraint)
         self.navigationController?.popToRootViewController(animated: true)
     }

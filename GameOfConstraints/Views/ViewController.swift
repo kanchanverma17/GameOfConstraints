@@ -15,11 +15,13 @@ class ViewController: UIViewController, updateViews {
         if let changed = changedConst.first {
             self.view.removeConstraint(changed)
         }
-        
         DispatchQueue.main.async {
-            self.view.addConstraint(newConstraingt)
+            if newConstraingt.isActive {
+                self.view.addConstraint(newConstraingt)
+            }
             self.view.updateConstraints()
             self.view.layoutIfNeeded()
+            
         }
     }
     
