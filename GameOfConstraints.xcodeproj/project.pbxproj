@@ -15,6 +15,8 @@
 		2323DFD42621FEF700D76030 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2323DFD22621FEF700D76030 /* LaunchScreen.storyboard */; };
 		2323DFDF2621FEF700D76030 /* GameOfConstraintsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2323DFDE2621FEF700D76030 /* GameOfConstraintsTests.swift */; };
 		2323DFEA2621FEF700D76030 /* GameOfConstraintsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2323DFE92621FEF700D76030 /* GameOfConstraintsUITests.swift */; };
+		2372E76F2629B090003BE585 /* ConstraintsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2372E76E2629B090003BE585 /* ConstraintsList.swift */; };
+		237D4901263ADE2C00D7E2A0 /* ConstraintsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237D4900263ADE2C00D7E2A0 /* ConstraintsVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +51,8 @@
 		2323DFE52621FEF700D76030 /* GameOfConstraintsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GameOfConstraintsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2323DFE92621FEF700D76030 /* GameOfConstraintsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOfConstraintsUITests.swift; sourceTree = "<group>"; };
 		2323DFEB2621FEF700D76030 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2372E76E2629B090003BE585 /* ConstraintsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstraintsList.swift; sourceTree = "<group>"; };
+		237D4900263ADE2C00D7E2A0 /* ConstraintsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstraintsVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,7 +105,7 @@
 			children = (
 				2323DFC72621FEF300D76030 /* AppDelegate.swift */,
 				2323DFC92621FEF300D76030 /* SceneDelegate.swift */,
-				2323DFCB2621FEF300D76030 /* ViewController.swift */,
+				237D48FF263ADE0200D7E2A0 /* Views */,
 				2323DFCD2621FEF300D76030 /* Main.storyboard */,
 				2323DFD02621FEF700D76030 /* Assets.xcassets */,
 				2323DFD22621FEF700D76030 /* LaunchScreen.storyboard */,
@@ -126,6 +130,16 @@
 				2323DFEB2621FEF700D76030 /* Info.plist */,
 			);
 			path = GameOfConstraintsUITests;
+			sourceTree = "<group>";
+		};
+		237D48FF263ADE0200D7E2A0 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				2323DFCB2621FEF300D76030 /* ViewController.swift */,
+				2372E76E2629B090003BE585 /* ConstraintsList.swift */,
+				237D4900263ADE2C00D7E2A0 /* ConstraintsVC.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -258,8 +272,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2372E76F2629B090003BE585 /* ConstraintsList.swift in Sources */,
 				2323DFCC2621FEF300D76030 /* ViewController.swift in Sources */,
 				2323DFC82621FEF300D76030 /* AppDelegate.swift in Sources */,
+				237D4901263ADE2C00D7E2A0 /* ConstraintsVC.swift in Sources */,
 				2323DFCA2621FEF300D76030 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

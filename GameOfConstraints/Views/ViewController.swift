@@ -16,9 +16,7 @@ class ViewController: UIViewController, updateViews {
             self.view.removeConstraint(changed)
         }
         DispatchQueue.main.async {
-            if newConstraingt.isActive {
-                self.view.addConstraint(newConstraingt)
-            }
+            self.view.addConstraint(newConstraingt)
             self.view.updateConstraints()
             self.view.layoutIfNeeded()
             
@@ -31,7 +29,6 @@ class ViewController: UIViewController, updateViews {
         super.viewDidLoad()
         self.title = "Work Board"
         
-        // Do any additional setup after loading the view.
     }
     
     func createIDLayer<T:UIView>(forView: T) {//-> T {
