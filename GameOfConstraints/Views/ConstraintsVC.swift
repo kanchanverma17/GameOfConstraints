@@ -11,11 +11,20 @@ protocol updateViews {
     func constraintChanged(newConstraingt: NSLayoutConstraint)
 }
 
+enum pickerFor {
+    case relation
+    case attributes
+    case subviews
+    case priority
+}
+
 enum errorType {
     case prior
 }
-class ConstraintsVC: UIViewController , UITextFieldDelegate {
+class ConstraintsVC: UIViewController , UITextFieldDelegate, UIPickerViewDataSource, UIPickerViewDelegate {
     
+    @IBOutlet weak var relationField: UITextField!
+    @IBOutlet weak var pickerVW: UIPickerView!
     @IBOutlet weak var toggleIsActive: UISwitch!
     @IBOutlet weak var FirstObj: UITextField!
     var theConstraint: NSLayoutConstraint!
@@ -23,6 +32,8 @@ class ConstraintsVC: UIViewController , UITextFieldDelegate {
     @IBOutlet weak var offSet: UITextField!
     @IBOutlet weak var multiplier: UITextField!
     @IBOutlet weak var SecObj: UITextField!
+    var selectedField: pickerFor = .relation
+    let relationArr = ["=",">=","=<"]
     var updateInitialVW: updateViews?
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,6 +49,8 @@ class ConstraintsVC: UIViewController , UITextFieldDelegate {
         offSet.text = "\(theConstraint.constant)"
         multiplier.text = SecObj.text?.isEmpty ?? true ? "" : "\(theConstraint.multiplier)"
         toggleIsActive.isOn = theConstraint.isActive
+        relationField.text = theConstraint.relation.equalityStr()
+        relationField.isUserInteractionEnabled = true
     }
    
     @IBAction func isActiveToggle(_ sender: Any) {
@@ -56,6 +69,13 @@ class ConstraintsVC: UIViewController , UITextFieldDelegate {
         self.navigationController?.popToRootViewController(animated: true)
     }
     func textFieldDidEndEditing(_ textField: UITextField) {
+        switch textField.tag {
+        case 11:
+            selectedField = .relation
+            pickerVW.isHidden = false
+        default:
+            selectedField = .relation
+        }
         
     }
     func validatepriority() -> Bool {
@@ -71,4 +91,30 @@ class ConstraintsVC: UIViewController , UITextFieldDelegate {
         alert.addAction(UIAlertAction.init(title: "OK", style: .default, handler: nil))
         self.present(alert, animated: true, completion: nil)
     }
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        switch selectedField {
+        case .relation:
+            return 3
+        default:
+            return 1
+        }
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        switch selectedField {
+        case .relation:
+            return relationArr[row]
+        default:
+            return ""
+        }
+    }
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        print("selected row \(relationArr[row])")
+    }
+    
 }
