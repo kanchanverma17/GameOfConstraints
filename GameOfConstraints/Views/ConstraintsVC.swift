@@ -63,10 +63,6 @@ class ConstraintsVC: UIViewController , UITextFieldDelegate, UIPickerViewDataSou
             showError(forCase: .prior)
             return
         }
-        if !validateMultiplier() {
-                showError(forCase: .multiplier)
-                return
-        }
         theConstraint.priority = UILayoutPriority.init((priority.text as NSString?)?.floatValue ?? 0.0)
         theConstraint.constant = CGFloat((offSet.text as NSString?)?.floatValue ?? 0.0)
         theConstraint.isActive = toggleIsActive.isOn
@@ -128,8 +124,11 @@ class ConstraintsVC: UIViewController , UITextFieldDelegate, UIPickerViewDataSou
         print("selected row \(relationArr[row])")
     }
     
-    func textFieldDidEndEditing(_ textField: UITextField, reason: UITextField.DidEndEditingReason) {
-        print("")
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        if textField.tag == 13 {
+            showError(forCase: .multiplier)
+            return
+        }
     }
     
 }
