@@ -31,13 +31,18 @@ class ViewController: UIViewController, updateViews {
         
     }
     
-    func createIDLayer<T:UIView>(forView: T) {//-> T {
+    func createIDLayer<T:UIView>(forView: T) {
         let layer1 = UILabel.init()
         layer1.backgroundColor = .systemTeal
         layer1.text = forView.accessibilityIdentifier
-        layer1.sizeToFit()
-        forView.addSubview(layer1)
-        layer1.frame.origin = CGPoint(x: -layer1.frame.size.width, y: -layer1.frame.size.height)
+        layer1.translatesAutoresizingMaskIntoConstraints = false
+        layer1.textAlignment = .center
+        layer1.tag = -1
+        self.view.addSubview(layer1)
+        layer1.trailingAnchor.constraint(equalTo: forView.leadingAnchor).isActive = true
+        layer1.bottomAnchor.constraint(equalTo: forView.topAnchor).isActive = true
+        layer1.widthAnchor.constraint(equalToConstant: 30).isActive = true
+        layer1.heightAnchor.constraint(equalToConstant: 25).isActive = true
         forView.bringSubviewToFront(layer1)
     }
 
@@ -47,8 +52,10 @@ class ViewController: UIViewController, updateViews {
     
     override func viewDidAppear(_ animated: Bool) {
         for vw in self.view.subviews {
-            vw.accessibilityIdentifier = "v\(self.view.subviews.firstIndex(of: vw) ?? 0)"
-            createIDLayer(forView: vw)
+            if vw.tag > -1 {
+                vw.accessibilityIdentifier = "v\(self.view.subviews.firstIndex(of: vw) ?? 0)"
+                createIDLayer(forView: vw)
+            }
         }
     }
     @IBAction func getListOfConstraints(_ sender: Any) {

@@ -20,6 +20,7 @@ enum pickerFor {
 
 enum errorType {
     case prior
+    case multiplier
 }
 class ConstraintsVC: UIViewController , UITextFieldDelegate, UIPickerViewDataSource, UIPickerViewDelegate {
     
@@ -62,9 +63,14 @@ class ConstraintsVC: UIViewController , UITextFieldDelegate, UIPickerViewDataSou
             showError(forCase: .prior)
             return
         }
+        if !validateMultiplier() {
+                showError(forCase: .multiplier)
+                return
+        }
         theConstraint.priority = UILayoutPriority.init((priority.text as NSString?)?.floatValue ?? 0.0)
         theConstraint.constant = CGFloat((offSet.text as NSString?)?.floatValue ?? 0.0)
         theConstraint.isActive = toggleIsActive.isOn
+        //theConstraint.multiplier = CGFloat((multiplier.text as NSString?)?.floatValue ?? 0.0)
         updateInitialVW?.constraintChanged(newConstraingt: theConstraint)
         self.navigationController?.popToRootViewController(animated: true)
     }
@@ -81,11 +87,16 @@ class ConstraintsVC: UIViewController , UITextFieldDelegate, UIPickerViewDataSou
     func validatepriority() -> Bool {
         return (((priority.text as NSString?)?.floatValue ?? 0.0) > 0) && (((priority.text as NSString?)?.floatValue ?? 0.0) < 1001)
     }
+    func validateMultiplier() -> Bool {
+        return theConstraint.multiplier == CGFloat((multiplier.text as NSString?)?.floatValue ?? 0.0)
+    }
     func showError(forCase: errorType) {
         var msg = ""
         switch forCase {
         case .prior:
             msg = "Priorities must be greater than 0 and less or equal to NSLayoutPriorityRequired, which is 1000.000000."
+        case .multiplier:
+            msg = "Multiplier is a get only property. Which means it can not be changed dynamically as it lacks set functionality of a property."
         }
         let alert = UIAlertController.init(title: "Warning", message: msg, preferredStyle: .alert)
         alert.addAction(UIAlertAction.init(title: "OK", style: .default, handler: nil))
@@ -115,6 +126,10 @@ class ConstraintsVC: UIViewController , UITextFieldDelegate, UIPickerViewDataSou
     }
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         print("selected row \(relationArr[row])")
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField, reason: UITextField.DidEndEditingReason) {
+        print("")
     }
     
 }

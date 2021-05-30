@@ -17,45 +17,56 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" text="Label jvjkjk " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p7Y-Yz-9C3">
-                                <rect key="frame" x="306" y="148" width="88" height="21"/>
-                                <color key="backgroundColor" red="0.94665317487165146" green="1" blue="0.54754821595698377" alpha="0.84705882352941175" colorSpace="custom" customColorSpace="displayP3"/>
-                                <accessibility key="accessibilityConfiguration" identifier="v2"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iaH-yZ-qPR">
-                                <rect key="frame" x="20" y="388" width="300" height="150"/>
-                                <color key="backgroundColor" systemColor="tertiaryLabelColor"/>
-                                <accessibility key="accessibilityConfiguration" identifier="v1">
-                                    <bool key="isElement" value="YES"/>
-                                </accessibility>
+                            <button opaque="NO" tag="-1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eeX-Zb-9jT">
+                                <rect key="frame" x="0.0" y="816" width="414" height="80"/>
+                                <color key="backgroundColor" red="0.25890494679916032" green="0.5330875336543196" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="300" id="AS9-IH-kGA"/>
-                                    <constraint firstAttribute="height" constant="150" id="Dkd-Vr-yUj"/>
+                                    <constraint firstAttribute="height" constant="80" id="aNW-91-tTK"/>
                                 </constraints>
-                            </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eeX-Zb-9jT">
-                                <rect key="frame" x="150.5" y="802" width="113" height="30"/>
-                                <state key="normal" title="Show Contraints"/>
+                                <state key="normal" title="Show Contraints">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
                                 <connections>
                                     <action selector="getListOfConstraints:" destination="BYZ-38-t0r" eventType="touchUpInside" id="AND-Ao-u6b"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oBr-Sy-8Qo">
+                                <rect key="frame" x="157" y="163" width="100" height="28"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="TAu-QT-U2m"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="23"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" bouncesZoom="NO" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="1lE-1Z-RJ5">
+                                <rect key="frame" x="57" y="257" width="300" height="130"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="130" id="bQ7-Sg-DR9"/>
+                                    <constraint firstAttribute="width" constant="300" id="fec-NX-yrn"/>
+                                </constraints>
+                                <string key="text">Hi this board will be used to add view components and see outputs after you manipulate constraints on those components. The labels showing up as "v1","v2" etc are for demo, understanding and updation purpose only (and cannot be changed). </string>
+                                <color key="textColor" systemColor="labelColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="iaH-yZ-qPR" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="300" id="JBR-x7-IvJ"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="p7Y-Yz-9C3" secondAttribute="trailing" constant="20" id="U4u-V0-erE"/>
-                            <constraint firstItem="eeX-Zb-9jT" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="X0v-IN-pZV"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="eeX-Zb-9jT" secondAttribute="bottom" constant="30" id="ZIb-R3-At7"/>
-                            <constraint firstItem="p7Y-Yz-9C3" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="60" id="oM5-Zp-cP2"/>
-                            <constraint firstItem="iaH-yZ-qPR" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="qUN-MN-leJ"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="eeX-Zb-9jT" secondAttribute="trailing" id="7RS-0w-jbX"/>
+                            <constraint firstItem="oBr-Sy-8Qo" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="75" id="A9q-4m-PYZ"/>
+                            <constraint firstItem="oBr-Sy-8Qo" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="D0F-w3-fpS"/>
+                            <constraint firstItem="1lE-1Z-RJ5" firstAttribute="centerX" secondItem="oBr-Sy-8Qo" secondAttribute="centerX" id="O6W-B4-G02"/>
+                            <constraint firstItem="1lE-1Z-RJ5" firstAttribute="top" secondItem="oBr-Sy-8Qo" secondAttribute="bottom" constant="66" id="TOn-qX-E7j"/>
+                            <constraint firstItem="eeX-Zb-9jT" firstAttribute="bottom" secondItem="8bC-Xf-vdC" secondAttribute="bottom" id="ZIb-R3-At7"/>
+                            <constraint firstItem="eeX-Zb-9jT" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="cwR-gz-T0S"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="cu0-DF-OJK"/>
+                    <navigationItem key="navigationItem" id="cu0-DF-OJK">
+                        <barButtonItem key="rightBarButtonItem" title="Edit Board" style="done" id="ycy-lo-VdF"/>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -311,11 +322,11 @@
         </scene>
     </scenes>
     <resources>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="tertiaryLabelColor">
-            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
