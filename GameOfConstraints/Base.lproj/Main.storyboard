@@ -40,15 +40,15 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" bouncesZoom="NO" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="1lE-1Z-RJ5">
-                                <rect key="frame" x="57" y="257" width="300" height="130"/>
+                                <rect key="frame" x="57" y="221" width="300" height="200"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="130" id="bQ7-Sg-DR9"/>
+                                    <constraint firstAttribute="height" constant="200" id="bQ7-Sg-DR9"/>
                                     <constraint firstAttribute="width" constant="300" id="fec-NX-yrn"/>
                                 </constraints>
                                 <string key="text">Hi this board will be used to add view components and see outputs after you manipulate constraints on those components. The labels showing up as "v1","v2" etc are for demo, understanding and updation purpose only (and cannot be changed). </string>
                                 <color key="textColor" systemColor="labelColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                         </subviews>
@@ -59,7 +59,7 @@
                             <constraint firstItem="oBr-Sy-8Qo" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="75" id="A9q-4m-PYZ"/>
                             <constraint firstItem="oBr-Sy-8Qo" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="D0F-w3-fpS"/>
                             <constraint firstItem="1lE-1Z-RJ5" firstAttribute="centerX" secondItem="oBr-Sy-8Qo" secondAttribute="centerX" id="O6W-B4-G02"/>
-                            <constraint firstItem="1lE-1Z-RJ5" firstAttribute="top" secondItem="oBr-Sy-8Qo" secondAttribute="bottom" constant="66" id="TOn-qX-E7j"/>
+                            <constraint firstItem="1lE-1Z-RJ5" firstAttribute="top" secondItem="oBr-Sy-8Qo" secondAttribute="bottom" constant="30" id="TOn-qX-E7j"/>
                             <constraint firstItem="eeX-Zb-9jT" firstAttribute="bottom" secondItem="8bC-Xf-vdC" secondAttribute="bottom" id="ZIb-R3-At7"/>
                             <constraint firstItem="eeX-Zb-9jT" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="cwR-gz-T0S"/>
                         </constraints>

@@ -19,7 +19,6 @@ class ViewController: UIViewController, updateViews {
             self.view.addConstraint(newConstraingt)
             self.view.updateConstraints()
             self.view.layoutIfNeeded()
-            
         }
     }
     
@@ -28,7 +27,6 @@ class ViewController: UIViewController, updateViews {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Work Board"
-        
     }
     
     func createIDLayer<T:UIView>(forView: T) {
@@ -61,7 +59,8 @@ class ViewController: UIViewController, updateViews {
     @IBAction func getListOfConstraints(_ sender: Any) {
         let nextVC = story.instantiateViewController(withIdentifier: "listVC") as! ConstraintsList
         nextVC.listData = self.view.constraints.filter({ (lay) -> Bool in
-            return !(((lay.firstItem as? UIView)?.accessibilityIdentifier == nil) && ((lay.secondItem as? UIView)?.accessibilityIdentifier == nil))
+             //return !(lay.firstItem?.tag == -1)
+            return !(((lay.firstItem as? UIView)?.accessibilityIdentifier == nil) && ((lay.secondItem as? UIView)?.accessibilityIdentifier == nil) || (lay.firstItem?.tag == -1))
         }) //subviews//
         for vw in self.view.subviews {
             let subViewsConstraints = vw.constraints.filter({ (lay) -> Bool in
