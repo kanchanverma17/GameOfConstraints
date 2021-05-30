@@ -35,7 +35,7 @@ class ViewController: UIViewController, updateViews {
         layer1.text = forView.accessibilityIdentifier
         layer1.translatesAutoresizingMaskIntoConstraints = false
         layer1.textAlignment = .center
-        layer1.tag = -1
+        layer1.tag = -10
         self.view.addSubview(layer1)
         layer1.trailingAnchor.constraint(equalTo: forView.leadingAnchor).isActive = true
         layer1.bottomAnchor.constraint(equalTo: forView.topAnchor).isActive = true
@@ -59,8 +59,7 @@ class ViewController: UIViewController, updateViews {
     @IBAction func getListOfConstraints(_ sender: Any) {
         let nextVC = story.instantiateViewController(withIdentifier: "listVC") as! ConstraintsList
         nextVC.listData = self.view.constraints.filter({ (lay) -> Bool in
-             //return !(lay.firstItem?.tag == -1)
-            return !(((lay.firstItem as? UIView)?.accessibilityIdentifier == nil) && ((lay.secondItem as? UIView)?.accessibilityIdentifier == nil) || (lay.firstItem?.tag == -1))
+            return !(((lay.firstItem as? UIView)?.accessibilityIdentifier == nil) && ((lay.secondItem as? UIView)?.accessibilityIdentifier == nil) || (lay.firstItem?.tag ?? 0 < 0))
         }) //subviews//
         for vw in self.view.subviews {
             let subViewsConstraints = vw.constraints.filter({ (lay) -> Bool in
@@ -69,6 +68,13 @@ class ViewController: UIViewController, updateViews {
             nextVC.listData.append(contentsOf: subViewsConstraints)
         }
         self.navigationController?.pushViewController(nextVC, animated: true)
+    }
+    
+    @IBAction func cleanAndUpdate(_ sender: Any) {
+        let subviews = self.view.subviews.filter({$0.tag != -1})
+        for vw in subviews {
+            vw.removeFromSuperview()
+        }
     }
     
 }

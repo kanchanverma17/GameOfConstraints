@@ -65,7 +65,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="cu0-DF-OJK">
-                        <barButtonItem key="rightBarButtonItem" title="Edit Board" style="done" id="ycy-lo-VdF"/>
+                        <barButtonItem key="rightBarButtonItem" title="Edit Board" style="done" id="ycy-lo-VdF">
+                            <connections>
+                                <action selector="cleanAndUpdate:" destination="BYZ-38-t0r" id="0pn-3s-wdW"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
