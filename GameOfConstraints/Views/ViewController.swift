@@ -32,26 +32,31 @@ class ViewController: UIViewController, updateViews {
     func createIDLayer<T:UIView>(forView: T) {
         let layer1 = UILabel.init()
         layer1.backgroundColor = .systemTeal
-        layer1.text = forView.accessibilityIdentifier
+        layer1.text = " \(forView.accessibilityIdentifier ?? "") "
         layer1.translatesAutoresizingMaskIntoConstraints = false
         layer1.textAlignment = .center
+        layer1.numberOfLines = 0
         layer1.tag = -10
         self.view.addSubview(layer1)
         layer1.trailingAnchor.constraint(equalTo: forView.leadingAnchor).isActive = true
         layer1.bottomAnchor.constraint(equalTo: forView.topAnchor).isActive = true
-        layer1.widthAnchor.constraint(equalToConstant: 30).isActive = true
+        //layer1.widthAnchor.constraint(equalToConstant: 30).isActive = true
         layer1.heightAnchor.constraint(equalToConstant: 25).isActive = true
+        forView.layer.borderWidth = 5
+        forView.layer.cornerRadius = 8
+        forView.layer.borderColor = UIColor.tertiarySystemGroupedBackground.cgColor
         forView.bringSubviewToFront(layer1)
+        print("view constraints: \(forView)" )
     }
 
     override func viewDidLayoutSubviews() {
-        
+       
     }
     
     override func viewDidAppear(_ animated: Bool) {
         for vw in self.view.subviews {
             if vw.tag > -1 {
-                vw.accessibilityIdentifier = "v\(self.view.subviews.firstIndex(of: vw) ?? 0)"
+                vw.accessibilityIdentifier = vw.accessibilityIdentifier ?? "v\(self.view.subviews.firstIndex(of: vw) ?? 0)"
                 createIDLayer(forView: vw)
             }
         }
